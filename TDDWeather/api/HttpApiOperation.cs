@@ -45,7 +45,7 @@ namespace TDDWeather
                 sb.Append(parameter.value);
             }
 
-            if (apiKey != null)
+            if (!string.IsNullOrEmpty(apiKey))
             {
                 if (sb.Length > 0)
                 {
