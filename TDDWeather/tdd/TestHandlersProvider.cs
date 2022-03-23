@@ -4,8 +4,7 @@
 	{
 		public ILocationQueryHandler GetLocationQueryHandler()
 		{
-			return ILocationQueryHandler()
-			throw new System.NotImplementedException();
+			return new MockLocationQueryHandler();
 		}
 	}
 }

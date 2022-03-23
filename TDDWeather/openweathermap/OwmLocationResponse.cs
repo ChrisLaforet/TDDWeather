@@ -21,12 +21,12 @@ namespace TDDWeather
 
 		public double GetLatitude()
 		{
-			return document["lat"]!.GetValue<double>();
+			return document["coord"]!["lat"]!.GetValue<double>();
 		}
 
 		public double GetLongitude()
 		{
-			return document["long"]!.GetValue<double>();
+			return document["coord"]!["lon"]!.GetValue<double>();
 		}
 	}
 }
