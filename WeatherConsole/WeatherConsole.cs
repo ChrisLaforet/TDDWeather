@@ -1,6 +1,7 @@
-﻿namespace WeatherConsole {
-
-    public static void Main(string [] args) {
+﻿class WeatherConsole
+{
+    public static void Main(string [] args)
+    {
 
     }
 }

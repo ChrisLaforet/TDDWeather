@@ -11,7 +11,7 @@ namespace TDDWeather
         private string pathname;
 
         public XMLCredentialsLoader(string pathname) => this.pathname = pathname;
-
+class WeatherConsole {}
         public string GetApiKey()
         {
             var fileElements = XElement.Load(pathname);
