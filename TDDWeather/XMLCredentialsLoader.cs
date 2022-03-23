@@ -5,11 +5,16 @@ namespace TDDWeather
 {
     public class XMLCredentialsLoader
     {
-        private const string FILENAME = @"C:\Code\OpenWeatherKeys\Credentials.xml";
+        // Save the credential apikey in a file formatted thus:
+        // <?xml version="1.0" encoding="utf-8" standalone="yes"?>
+        // <ApiKey>abcdef1234567890abcdef1234567890</ApiKey>
+        private string pathname;
+
+        public XMLCredentialsLoader(string pathname) => this.pathname = pathname;
 
         public string GetApiKey()
         {
-            var fileElements = XElement.Load(FILENAME);
+            var fileElements = XElement.Load(pathname);
             var element = fileElements.FirstNode;
             if (element != null && element.NodeType == System.Xml.XmlNodeType.Text)
             {
