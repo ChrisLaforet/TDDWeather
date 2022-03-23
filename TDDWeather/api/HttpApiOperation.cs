@@ -4,9 +4,9 @@ using System.Net.Http.Headers;
 
 namespace TDDWeather
 {
-    public class ApiSupport
+    public class HttpApiOperation : IApiOperation
     {
-        private string PerformGET(string url, string parameters)
+        public string PerformGET(string url, string parameters, string apiKey)
         {
             HttpClient client;
             using (client = new HttpClient())

@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace TDDWeather
 {
-    public class XMLCredentialsLoader
+    public class XMLCredentialsLoader : ICredentialsLoader
     {
         // Save the credential apikey in a file formatted thus:
         // <?xml version="1.0" encoding="utf-8" standalone="yes"?>
