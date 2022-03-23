@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDWeather", "TDDWeather\TDDWeather.csproj", "{1A295754-8B39-461A-B740-4DD53C3857B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherConsole", "WeatherConsole\WeatherConsole.csproj", "{4F63ACC6-B9F7-4AD7-9C6A-B0E95593046F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{1A295754-8B39-461A-B740-4DD53C3857B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A295754-8B39-461A-B740-4DD53C3857B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A295754-8B39-461A-B740-4DD53C3857B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F63ACC6-B9F7-4AD7-9C6A-B0E95593046F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F63ACC6-B9F7-4AD7-9C6A-B0E95593046F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F63ACC6-B9F7-4AD7-9C6A-B0E95593046F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F63ACC6-B9F7-4AD7-9C6A-B0E95593046F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
