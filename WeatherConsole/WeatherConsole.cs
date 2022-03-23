@@ -43,7 +43,7 @@ class WeatherConsole
             return;
         }
         
-        Console.WriteLine($"  Latitude: {location.GetLatitude()}");
-        Console.WriteLine($"  Longitude: {location.GetLongitude()}");
+        Console.WriteLine("  Latitude: " + location.GetLatitude());
+        Console.WriteLine("  Longitude: " + location.GetLongitude());
     }
 }
