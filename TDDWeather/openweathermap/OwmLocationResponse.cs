@@ -9,22 +9,24 @@ namespace TDDWeather
 
 		public OwmLocationResponse(string jsonResponse) => document = JsonNode.Parse(jsonResponse)!;
 
+		// See https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-use-dom-utf8jsonreader-utf8jsonwriter?pivots=dotnet-7-0#deserialize-subsections-of-a-json-payload
+		// int hotHigh = forecastNode["TemperatureRanges"]!["Hot"]!["High"]!.GetValue<int>();
+		// JsonArray datesAvailable = forecastNode!["DatesAvailable"]!.AsArray()!;
+		// Console.WriteLine($"DatesAvailable[0]={datesAvailable[0]}");
+
 		public string GetCity()
 		{
-			// int hotHigh = forecastNode["TemperatureRanges"]!["Hot"]!["High"]!.GetValue<int>();
-			//  JsonArray datesAvailable = forecastNode!["DatesAvailable"]!.AsArray()!;
-			// Console.WriteLine($"DatesAvailable[0]={datesAvailable[0]}");
-			throw new System.NotImplementedException();
+			return document["name"]!.GetValue<string>();
 		}
 
 		public double GetLatitude()
 		{
-			throw new System.NotImplementedException();
+			return document["lat"]!.GetValue<double>();
 		}
 
 		public double GetLongitude()
 		{
-			throw new System.NotImplementedException();
+			return document["long"]!.GetValue<double>();
 		}
 	}
 }
