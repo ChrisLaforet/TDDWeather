@@ -1,7 +1,9 @@
-﻿namespace TDDWeather
+﻿using System.Collections.Generic;
+
+namespace TDDWeather
 {
 	public interface IApiOperation
 	{
-		string PerformGET(string url, string parameters, string apiKey);
+		string PerformGET(string url, List<(string key, string value)> parameters, string apiKey);
 	}
 }
