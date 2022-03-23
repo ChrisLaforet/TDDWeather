@@ -15,5 +15,10 @@
 		{
 			return new OwmLocationQueryHandler(apiOperation, apiKey);
 		}
+
+		public ICurrentConditionsQueryHandler GetCurrentConditionsQueryHandler()
+		{
+			return new OwmCurrentConditionsQueryHandler(apiOperation, apiKey);
+		}
 	}
 }

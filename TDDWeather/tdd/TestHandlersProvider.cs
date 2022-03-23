@@ -6,5 +6,10 @@
 		{
 			return new MockLocationQueryHandler();
 		}
+
+		public ICurrentConditionsQueryHandler GetCurrentConditionsQueryHandler()
+		{
+			return new MockCurrentConditionsQueryHandler();
+		}
 	}
 }

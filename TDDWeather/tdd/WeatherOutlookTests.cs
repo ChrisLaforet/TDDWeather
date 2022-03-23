@@ -21,6 +21,22 @@ namespace TDDWeather
         }
 
         [Fact]
+        public void GivenTemperatureInKelvin_WhenConverted_ThenReturnsCelsius()
+        {
+            Assert.Equal(-23.1, Converters.KelvinToCelsius(250));
+            Assert.Equal(50, Converters.KelvinToCelsius(323.15));
+            Assert.Equal(86, Converters.KelvinToCelsius(359.15));
+        }
+
+        [Fact]
+        public void GivenWindSpeedInMetersPerSec_WhenConverted_ThenReturnsKnots()
+        {
+            Assert.Equal(58.3, Converters.MetersPerSecondToKnots(30));
+            Assert.Equal(0, Converters.MetersPerSecondToKnots(0));
+            Assert.Equal(15, Converters.MetersPerSecondToKnots(7.71667));
+        }   
+        
+        [Fact]
         public void GivenNonExistentLocation_WhenLocationQueryHandled_ThenReturnsNull()
         {
             Assert.Null(provider.GetLocationQueryHandler().GetLocationFor(null, null, null));
@@ -29,11 +45,23 @@ namespace TDDWeather
         [Fact]
         public void GivenValidLocation_WhenLocationQueryHandled_ThenReturnsValidResponse()
         {
-            ILocation location = provider.GetLocationQueryHandler().GetLocationFor(CITY, COUNTRY, STATE);
+            var location = provider.GetLocationQueryHandler().GetLocationFor(CITY, COUNTRY, STATE);
             Assert.NotNull(location);
             Assert.Equal(CITY, location.GetCity());
             Assert.Equal(LATITUDE, location.GetLatitude());
             Assert.Equal(LONGITUDE, location.GetLongitude());
+        }
+
+        [Fact]
+        public void GivenValidLocation_WhenCurrentConditionsQueryHandled_ThenReturnsValidResponse()
+        {
+            var conditions = provider.GetCurrentConditionsQueryHandler().GetCurrentConditionsFor(LATITUDE, LONGITUDE);
+            Assert.NotNull(conditions);
+            Assert.Equal(14.2, conditions.GetTemperatureInCelsius());
+            Assert.Equal(4.0, conditions.GetWindSpeedInKnots());
+            Assert.Equal(93, conditions.GetCloudCoveragePercent());
+            Assert.Equal("Clouds", conditions.GetConditionCode());
+            Assert.Equal("overcast clouds", conditions.GetConditionDescription());
         }
 
         private string weatherForBurlingtonQuery = "https://api.openweathermap.org/data/2.5/weather?lat=36.0957&lon=-79.4378&appid=abcd";
