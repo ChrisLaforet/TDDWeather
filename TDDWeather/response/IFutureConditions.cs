@@ -1,4 +1,6 @@
-﻿namespace TDDWeather
+﻿using System;
+
+namespace TDDWeather
 {
 	public interface IFutureConditions
 	{
@@ -8,7 +10,7 @@
 		double GetTemperatureInCelsius();
 		double GetMinimumTemperatureInCelsius();
 		double GetMaximumTemperatureInCelsius();
-		int GetSunriseTime();
-		int GetSunsetTime();
+		DateTime GetSunriseTime();
+		DateTime GetSunsetTime();
 	}
 }

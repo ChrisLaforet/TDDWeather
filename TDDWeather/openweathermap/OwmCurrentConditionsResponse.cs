@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 
 namespace TDDWeather
@@ -59,14 +60,14 @@ namespace TDDWeather
             return document["wind"]!["deg"]!.GetValue<int>();
         }
 
-        public int GetSunriseTime()
+        public DateTime GetSunriseTime()
         {
-            throw new System.NotImplementedException();
+            return Converters.UnixTimestampToUTC(document["sys"]!["sunrise"].GetValue<int>());
         }
 
-        public int GetSunsetTime()
+        public DateTime GetSunsetTime()
         {
-            throw new System.NotImplementedException();
+            return Converters.UnixTimestampToUTC(document["sys"]!["sunset"].GetValue<int>());
         }
     }
 }

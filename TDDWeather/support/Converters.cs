@@ -18,5 +18,13 @@ namespace TDDWeather
         {
             return Math.Round(ms * 1.944, 1, MidpointRounding.ToZero);
         }
+
+        public static DateTime UnixTimestampToUTC(int unixTimestamp)
+        {
+            {
+                DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                return dateTime.AddSeconds(unixTimestamp).ToUniversalTime();
+            }
+        }
     }
 }

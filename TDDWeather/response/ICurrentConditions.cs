@@ -1,4 +1,6 @@
-﻿namespace TDDWeather
+﻿using System;
+
+namespace TDDWeather
 {
 	public interface ICurrentConditions
 	{
@@ -12,7 +14,7 @@
 		int GetVisibilityInFeet();
 		double GetWindSpeedInKnots();
 		int GetWindDirectionInDegrees();
-		int GetSunriseTime();
-		int GetSunsetTime();
+		DateTime GetSunriseTime();
+		DateTime GetSunsetTime();
 	}
 }
