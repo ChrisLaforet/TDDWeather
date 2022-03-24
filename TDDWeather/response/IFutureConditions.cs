@@ -4,13 +4,11 @@ namespace TDDWeather
 {
 	public interface IFutureConditions
 	{
+		DateTime GetForecastDate();
 		string GetConditionCode();
-		string GetConditionDescription();
-		int GetCloudCoveragePercent();
-		double GetTemperatureInCelsius();
+		int GetMinimumCloudCoveragePercent();
+		int GetMaximumCloudCoveragePercent();
 		double GetMinimumTemperatureInCelsius();
 		double GetMaximumTemperatureInCelsius();
-		DateTime GetSunriseTime();
-		DateTime GetSunsetTime();
 	}
 }

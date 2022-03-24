@@ -11,5 +11,10 @@
 		{
 			return new MockCurrentConditionsQueryHandler();
 		}
+
+		public IFutureConditionsQueryHandler GetFutureConditionsQueryHandler()
+		{
+			return new MockFutureConditionsQueryHandler();
+		}
 	}
 }

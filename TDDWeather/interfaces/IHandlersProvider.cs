@@ -4,5 +4,6 @@
 	{
 		ILocationQueryHandler GetLocationQueryHandler();
 		ICurrentConditionsQueryHandler GetCurrentConditionsQueryHandler();
+		IFutureConditionsQueryHandler GetFutureConditionsQueryHandler();
 	}
 }

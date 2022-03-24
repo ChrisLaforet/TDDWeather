@@ -20,5 +20,10 @@
 		{
 			return new OwmCurrentConditionsQueryHandler(apiOperation, apiKey);
 		}
+
+		public IFutureConditionsQueryHandler GetFutureConditionsQueryHandler()
+		{
+			throw new System.NotImplementedException();
+		}
 	}
 }
