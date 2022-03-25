@@ -79,5 +79,16 @@ namespace TDDWeather
             Assert.NotNull(conditions);
             Assert.NotEmpty(conditions);
         }
+
+        [Fact]
+        public void GivenDateTimesAndTZOffsetOfZero_WhenGettingDayOfWeek_ThenReturnsCorrectDayOfWeek()
+        {
+
+        }
+
+        public void GivenDateTimesAndTZOffsetCorrespondingToEDT_WhenGettingDayOfWeek_ThenReturnsCorrectDayOfWeek()
+        {
+
+        }
     }
 }
