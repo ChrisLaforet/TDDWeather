@@ -14,9 +14,8 @@ namespace TDDWeather
 			// divide up entries into days taking tz into account
 			var dayConditions = ExtractDayConditionsFrom(jsonResponse);
 
-			// order days
-
 			// process each day to derive the values
+			dayConditions.ForEach(dc => response.Add(ProcessDayConditionsFor(dc)));
 
 
 			return response;
@@ -53,6 +52,24 @@ namespace TDDWeather
 			response.Sort((a,b) => a.Date.CompareTo(b.Date));
 			return response;
 		}
+
+		private static IFutureConditions ProcessDayConditionsFor(DayConditions dayConditions)
+		{
+			double maxTemp = 0;
+			double minTemp = 0;
+			dayConditions.GetConditions().ForEach(condition =>
+			{
+				if (condition.MaximumTemperature > maxTemp)
+				{
+					maxTemp = condition.MaximumTemperature;
+				}
+
+				if (minTemp == 0 || condition.MinimumTemperature < minTemp)
+				{
+					minTemp = condition.MinimumTemperature;
+				}
+			});
+		}
 	}
 
 	internal class Conditions
@@ -74,6 +91,11 @@ namespace TDDWeather
 		public void AddConditions(Conditions conditions)
 		{
 			this.conditions.Add(conditions);
+		}
+
+		public List<Conditions> GetConditions()
+		{
+			return conditions;
 		}
 	}
 }
