@@ -62,12 +62,12 @@ namespace TDDWeather
 
         public DateTime GetSunriseTime()
         {
-            return Converters.UnixTimestampToUTC(document["sys"]!["sunrise"].GetValue<int>());
+            return Converters.UnixTimestampToUtc(document["sys"]!["sunrise"].GetValue<int>());
         }
 
         public DateTime GetSunsetTime()
         {
-            return Converters.UnixTimestampToUTC(document["sys"]!["sunset"].GetValue<int>());
+            return Converters.UnixTimestampToUtc(document["sys"]!["sunset"].GetValue<int>());
         }
     }
 }

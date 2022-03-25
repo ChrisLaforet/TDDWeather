@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace TDDWeather
 {
@@ -9,6 +10,11 @@ namespace TDDWeather
         private const string COUNTRY = "US";
         private const double LATITUDE = 36.0957;
         private const double LONGITUDE = -79.4378;
+        
+        private DateTime dt1 = new DateTime(637817450800000000, DateTimeKind.Utc);
+        private DateTime dt2 = new DateTime(637842059990000000, DateTimeKind.Utc);
+        private DateTime dt3 = new DateTime(637842815990000000, DateTimeKind.Utc);
+        private DateTime dt4 = new DateTime(637857468000000000, DateTimeKind.Utc);
      
         private IHandlersProvider provider = new TestHandlersProvider();
         
@@ -39,8 +45,8 @@ namespace TDDWeather
         [Fact]
         public void GivenUnixTimestamp_WhenConverted_ThenReturnUTC()
         {
-            Assert.Equal("1/1/1970 12:00:00 AM", Converters.UnixTimestampToUTC(0).ToString());
-            Assert.Equal("3/24/2022 3:45:36 AM", Converters.UnixTimestampToUTC(1648093536).ToString());
+            Assert.Equal("1/1/1970 12:00:00 AM", Converters.UnixTimestampToUtc(0).ToString());
+            Assert.Equal("3/24/2022 3:45:36 AM", Converters.UnixTimestampToUtc(1648093536).ToString());
         }
         
         [Fact]
@@ -83,12 +89,20 @@ namespace TDDWeather
         [Fact]
         public void GivenDateTimesAndTZOffsetOfZero_WhenGettingDayOfWeek_ThenReturnsCorrectDayOfWeek()
         {
-
+            Assert.Equal(2, TimezoneTools.ExtractDayFrom(dt1, 0));
+            Assert.Equal(3, TimezoneTools.ExtractDayFrom(dt2, 0));
+            Assert.Equal(3, TimezoneTools.ExtractDayFrom(dt3, 0));
+            Assert.Equal(6, TimezoneTools.ExtractDayFrom(dt4, 0));
         }
 
+        [Fact]
         public void GivenDateTimesAndTZOffsetCorrespondingToEDT_WhenGettingDayOfWeek_ThenReturnsCorrectDayOfWeek()
         {
-
+            int offsetSeconds = -14400;     // EDT
+            Assert.Equal(2, TimezoneTools.ExtractDayFrom(dt1, offsetSeconds));
+            Assert.Equal(2, TimezoneTools.ExtractDayFrom(dt2, offsetSeconds));
+            Assert.Equal(3, TimezoneTools.ExtractDayFrom(dt3, offsetSeconds));
+            Assert.Equal(6, TimezoneTools.ExtractDayFrom(dt4, offsetSeconds));
         }
     }
 }

@@ -4,7 +4,7 @@ namespace TDDWeather
 {
 	public interface IFutureConditions
 	{
-		DateTime GetForecastDate();
+		DateTimeOffset GetForecastDate();
 		string GetConditionCode();
 		int GetMinimumCloudCoveragePercent();
 		int GetMaximumCloudCoveragePercent();
