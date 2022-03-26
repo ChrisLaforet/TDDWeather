@@ -55,20 +55,33 @@ namespace TDDWeather
 
 		private static IFutureConditions ProcessDayConditionsFor(DayConditions dayConditions)
 		{
-			double maxTemp = 0;
-			double minTemp = 0;
+			var maxTemp = 0.0d;
+			var minTemp = 0.0d;
+			var maxCloudPercent = 0;
+			var minCloudPercent = 100;
+			var conditionCodes = new Dictionary<string, int>();
 			dayConditions.GetConditions().ForEach(condition =>
 			{
-				if (condition.MaximumTemperature > maxTemp)
+				maxTemp = maxTemp < condition.MaximumTemperature ? condition.MaximumTemperature : maxTemp;
+				minTemp = minTemp == 0 || minTemp > condition.MinimumTemperature ? condition.MinimumTemperature : minTemp;
+				maxCloudPercent = maxCloudPercent < condition.CloudCoveragePercent ? condition.CloudCoveragePercent : maxCloudPercent;
+				minCloudPercent = minCloudPercent > condition.CloudCoveragePercent ? condition.CloudCoveragePercent : minCloudPercent;
+				if (conditionCodes.ContainsKey(condition.ConditionCode))
 				{
-					maxTemp = condition.MaximumTemperature;
+					conditionCodes[condition.ConditionCode] = conditionCodes[condition.ConditionCode] + 1;
 				}
-
-				if (minTemp == 0 || condition.MinimumTemperature < minTemp)
+				else
 				{
-					minTemp = condition.MinimumTemperature;
+					conditionCodes[condition.ConditionCode] = 1;
 				}
 			});
+
+			string conditionCode = "Variable";
+			var max = 0;
+			
+			
+			return new OwmFutureConditionResponse(dayConditions.Date, conditionCode, minCloudPercent,
+				maxCloudPercent, minTemp, maxTemp);
 		}
 	}
 
