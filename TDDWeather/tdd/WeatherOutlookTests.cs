@@ -81,9 +81,17 @@ namespace TDDWeather
         [Fact]
         public void GivenValidLocation_WhenFutureConditionsQueryHandler_ThenReturnsValidResponse()
         {
-            var conditions = provider.GetFutureConditionsQueryHandler().GetFutureConditionsFor(LATITUDE, LONGITUDE);
-            Assert.NotNull(conditions);
-            Assert.NotEmpty(conditions);
+            var futureConditions = provider.GetFutureConditionsQueryHandler().GetFutureConditionsFor(LATITUDE, LONGITUDE);
+            Assert.NotNull(futureConditions);
+            Assert.NotEmpty(futureConditions);
+            Assert.Equal(6, futureConditions.Count);
+            
+            Assert.Equal("Wednesday", futureConditions[0].GetDayOfWeek());
+            Assert.Equal(14.3, futureConditions[0].GetMinimumTemperatureInCelsius());
+            Assert.Equal(18.5, futureConditions[0].GetMaximumTemperatureInCelsius());
+            Assert.Equal(89, futureConditions[0].GetMinimumCloudCoveragePercent());
+            Assert.Equal(100, futureConditions[0].GetMaximumCloudCoveragePercent());
+            Assert.Equal("Rain", futureConditions[0].GetConditionCode());
         }
 
         [Fact]

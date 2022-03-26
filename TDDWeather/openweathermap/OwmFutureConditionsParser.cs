@@ -75,13 +75,25 @@ namespace TDDWeather
 					conditionCodes[condition.ConditionCode] = 1;
 				}
 			});
-
-			string conditionCode = "Variable";
-			var max = 0;
 			
-			
-			return new OwmFutureConditionResponse(dayConditions.Date, conditionCode, minCloudPercent,
+			return new OwmFutureConditionResponse(dayConditions.Date, ExtractConditionCodeFrom(conditionCodes), minCloudPercent,
 				maxCloudPercent, minTemp, maxTemp);
+		}
+
+		private static string ExtractConditionCodeFrom(Dictionary<string, int> conditionCodes)
+		{
+			var currentCount = 0;
+			var currentCode = string.Empty;
+			foreach (var conditionCode in conditionCodes)
+			{
+				if (conditionCode.Value > currentCount)
+				{
+					currentCount = conditionCode.Value;
+					currentCode = conditionCode.Key;
+				}				
+			}
+
+			return currentCode;
 		}
 	}
 

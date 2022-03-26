@@ -8,7 +8,7 @@ namespace TDDWeather
         private string conditionCode;
         private int minimumCloudCoveragePercent;
         private int maximumCloudCoveragePercent;
-        private double minimumTemperatureInKelvin,
+        private double minimumTemperatureInKelvin;
         private double maximumTemperatureInKelvin;
 
         public OwmFutureConditionResponse(DateTimeOffset date, string conditionCode,
@@ -20,9 +20,8 @@ namespace TDDWeather
             this.minimumCloudCoveragePercent = minimumCloudCoveragePercent;
             this.maximumCloudCoveragePercent = maximumCloudCoveragePercent;
             this.minimumTemperatureInKelvin = minimumTemperatureInKelvin;
-            this.maximumTemperatureInKelvin = maximumCloudCoveragePercent;
+            this.maximumTemperatureInKelvin = maximumTemperatureInKelvin;
         }
-
 
         public DateTimeOffset GetForecastDate()
         {
