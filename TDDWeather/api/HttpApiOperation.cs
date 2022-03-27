@@ -14,7 +14,7 @@ namespace TDDWeather
             using (client = new HttpClient())
             {
                 client.BaseAddress = new Uri(url);
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+ //               client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 var preparedParameters = PrepareParameters(parameters, apiKey);
 

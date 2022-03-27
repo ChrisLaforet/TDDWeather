@@ -23,7 +23,7 @@
 
 		public IFutureConditionsQueryHandler GetFutureConditionsQueryHandler()
 		{
-			throw new System.NotImplementedException();
+			return new OwmFutureConditionsQueryHandler(apiOperation, apiKey);
 		}
 	}
 }
